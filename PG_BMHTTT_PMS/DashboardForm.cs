@@ -1,4 +1,5 @@
 ﻿using PG_BMHTTT_PMS.Admin;
+using PG_BMHTTT_PMS.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace PG_BMHTTT_PMS
@@ -35,7 +37,43 @@ namespace PG_BMHTTT_PMS
                }
           }
 
+          public void ViewChildForm(object Form){
+               if (this.DisplayFormPanel.Controls.Count > 0){
+                    this.DisplayFormPanel.Controls.RemoveAt(0);
+               }
+               Form f = Form as Form;
+               f.TopLevel = false;
+               f.Dock = DockStyle.Fill;
 
+               this.DisplayFormPanel.Controls.Add(f);
+               this.DisplayFormPanel.Tag = f;
+               f.Show();
+          }
+          
+          private void btnHomePage_Click(object sender, EventArgs e)
+          {
+               ViewChildForm(new HomePageForm());
+          }
+
+          private void btnAnalystic_Click(object sender, EventArgs e)
+          {
+               ViewChildForm(new AnalysticForm());
+          }
+
+          private void btnUserManagement_Click(object sender, EventArgs e)
+          {
+               ViewChildForm(new UserManagementForm());
+          }
+
+          private void btnSettings_Click(object sender, EventArgs e)
+          {
+               ViewChildForm(new UserManagementForm());
+          }
+
+          private void btnPassManagement_Click(object sender, EventArgs e)
+          {
+               ViewChildForm(new PasswordManagementForm());
+          }
           private void closeBtn_Click(object sender, EventArgs e)
           {
                DialogResult result = MessageBox.Show("Are you sure you want to exit??", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -43,19 +81,6 @@ namespace PG_BMHTTT_PMS
                {
                     this.Close();
                }
-          }
-          private void btnHomePage_Click(object sender, EventArgs e)
-          {
-               HomePageForm homePageForm = new HomePageForm() { TopLevel = false, TopMost = true };
-               DisplayFormPanel.Controls.Add(homePageForm);
-               homePageForm.Show();
-          }
-
-          private void btnAnalystic_Click(object sender, EventArgs e)
-          {
-               AnalysticForm analysticForm = new AnalysticForm() { TopLevel = false, TopMost = true };
-               DisplayFormPanel.Controls.Add(analysticForm);
-               analysticForm.Show();
           }
      }
 }

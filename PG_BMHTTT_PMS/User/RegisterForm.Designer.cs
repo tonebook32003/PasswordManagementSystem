@@ -45,11 +45,17 @@
                this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
                this.closeBtn = new Guna.UI2.WinForms.Guna2Button();
                this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+               this.pictureBoxHidePass = new System.Windows.Forms.PictureBox();
+               this.pictureBoxShowPass = new System.Windows.Forms.PictureBox();
                this.guna2CustomGradientPanel1.SuspendLayout();
+               ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHidePass)).BeginInit();
+               ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowPass)).BeginInit();
                this.SuspendLayout();
                // 
                // guna2CustomGradientPanel1
                // 
+               this.guna2CustomGradientPanel1.Controls.Add(this.pictureBoxHidePass);
+               this.guna2CustomGradientPanel1.Controls.Add(this.pictureBoxShowPass);
                this.guna2CustomGradientPanel1.Controls.Add(this.guna2HtmlLabel6);
                this.guna2CustomGradientPanel1.Controls.Add(this.loginButton);
                this.guna2CustomGradientPanel1.Controls.Add(this.guna2HtmlLabel5);
@@ -72,6 +78,7 @@
                this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
                this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(456, 686);
                this.guna2CustomGradientPanel1.TabIndex = 0;
+               this.guna2CustomGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
                // 
                // guna2HtmlLabel6
                // 
@@ -164,7 +171,7 @@
                this.txtPassword.Location = new System.Drawing.Point(58, 438);
                this.txtPassword.Margin = new System.Windows.Forms.Padding(7);
                this.txtPassword.Name = "txtPassword";
-               this.txtPassword.PasswordChar = '*';
+               this.txtPassword.PasswordChar = '●';
                this.txtPassword.PlaceholderText = "Enter your password...";
                this.txtPassword.SelectedText = "";
                this.txtPassword.Size = new System.Drawing.Size(329, 44);
@@ -304,6 +311,30 @@
                this.guna2Elipse1.BorderRadius = 20;
                this.guna2Elipse1.TargetControl = this;
                // 
+               // pictureBoxHidePass
+               // 
+               this.pictureBoxHidePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxHidePass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHidePass.Image")));
+               this.pictureBoxHidePass.Location = new System.Drawing.Point(330, 448);
+               this.pictureBoxHidePass.Name = "pictureBoxHidePass";
+               this.pictureBoxHidePass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxHidePass.TabIndex = 55;
+               this.pictureBoxHidePass.TabStop = false;
+               this.pictureBoxHidePass.Click += new System.EventHandler(this.pictureBoxHidePass_Click);
+               // 
+               // pictureBoxShowPass
+               // 
+               this.pictureBoxShowPass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowPass.Image")));
+               this.pictureBoxShowPass.Location = new System.Drawing.Point(330, 448);
+               this.pictureBoxShowPass.Name = "pictureBoxShowPass";
+               this.pictureBoxShowPass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxShowPass.TabIndex = 54;
+               this.pictureBoxShowPass.TabStop = false;
+               this.pictureBoxShowPass.Click += new System.EventHandler(this.pictureBoxShowPass_Click);
+               // 
                // RegisterForm
                // 
                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,6 +349,8 @@
                this.Text = "RegisterForm";
                this.guna2CustomGradientPanel1.ResumeLayout(false);
                this.guna2CustomGradientPanel1.PerformLayout();
+               ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHidePass)).EndInit();
+               ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowPass)).EndInit();
                this.ResumeLayout(false);
 
           }
@@ -339,5 +372,7 @@
           private Guna.UI2.WinForms.Guna2TextBox txtEmail;
           private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
           private Guna.UI2.WinForms.Guna2Button loginButton;
+          private System.Windows.Forms.PictureBox pictureBoxHidePass;
+          private System.Windows.Forms.PictureBox pictureBoxShowPass;
      }
 }

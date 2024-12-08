@@ -76,11 +76,32 @@
     <Compile Include="DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Encrypt\DesEncrypter.cs" />
     <Compile Include="HomePageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HomePageForm.Designer.cs">
       <DependentUpon>HomePageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\PasswordEntry.cs" />
+    <Compile Include="User\AddPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\AddPassword.Designer.cs">
+      <DependentUpon>AddPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\Managerment_Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\Managerment_Category.Designer.cs">
+      <DependentUpon>Managerment_Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\EditInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\EditInfo.Designer.cs">
+      <DependentUpon>EditInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="User\ForgotPasswordForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +117,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\PasswordManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\PasswordManagementForm.Designer.cs">
+      <DependentUpon>PasswordManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +148,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\AddPassword.resx">
+      <DependentUpon>AddPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\Managerment_Category.resx">
+      <DependentUpon>Managerment_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\EditInfo.resx">
+      <DependentUpon>EditInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\PasswordManagementForm.resx">
+      <DependentUpon>PasswordManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>

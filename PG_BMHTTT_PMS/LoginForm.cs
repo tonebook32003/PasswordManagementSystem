@@ -1,6 +1,8 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace PG_BMHTTT_PMS
 {
@@ -20,19 +22,6 @@ namespace PG_BMHTTT_PMS
                }
           }
 
-          private class User
-          {
-               public string Username { get; set; }
-               public string Password { get; set; }
-               public string LoaiTaiKhoan { get; set; }
-
-               public User(string username, string password, string loaiTaiKhoan)
-               {
-                    Username = username;
-                    Password = password;
-                    LoaiTaiKhoan = loaiTaiKhoan;
-               }
-          }
           private void loginBtn_Click(object sender, EventArgs e)
           {
                string username = txtUsername.Text.Trim();
@@ -40,7 +29,7 @@ namespace PG_BMHTTT_PMS
 
                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                {
-                    MessageBox.Show("Please enter complete login information!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please enter username and password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                }
 
@@ -48,44 +37,45 @@ namespace PG_BMHTTT_PMS
                {
                     try
                     {
-                         User user = null;
                          OracleConnection conn = ConnectDatabase.Get_Connect();
-                         string query = "SELECT * FROM USERS WHERE USERNAME = :username AND PASSWORD = :password";
+                         string query = "SELECT * FROM USERS WHERE USERNAME = :username";
+                         
                          using (OracleCommand cmd = new OracleCommand(query, conn))
                          {
-                              cmd.Parameters.Add(":username", OracleDbType.Varchar2, 10).Value = username;
-                              cmd.Parameters.Add(":password", OracleDbType.Varchar2, 30).Value = password;
+                              cmd.Parameters.Add(":username", OracleDbType.Varchar2).Value = username;
 
                               using (OracleDataReader reader = cmd.ExecuteReader())
                               {
                                    if (reader.Read())
                                    {
-                                        user = new User(
-                                            reader["USERNAME"].ToString(),
-                                            reader["PASSWORD"].ToString(),
-                                            reader["LOAITAIKHOAN"].ToString()
-                                        );
+                                        string salt = reader["SALT"].ToString();
+                                        string hashedPassword = HashPassword(password, salt);
+                                        if (hashedPassword == reader["MASTER_PASSWORD"].ToString())
+                                        {
+                                             MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                             DashboardForm dashboard = new DashboardForm();
+                                             dashboard.Show();
+                                             this.Hide();
+                                        }
+                                        else
+                                        {
+                                             MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                             txtPassword.Clear();
+                                             txtPassword.Focus();
+                                        }
+                                   }
+                                   else
+                                   {
+                                        MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        txtPassword.Clear();
+                                        txtPassword.Focus();
                                    }
                               }
-                         }
-
-                         if (user != null)
-                         {
-                              MessageBox.Show($"Log in successfully!\nAccount type: {user.LoaiTaiKhoan}\nServer version: " + conn.ServerVersion, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                              DashboardForm main = new DashboardForm();
-                              main.Show();
-                              this.Hide();
-                         }
-                         else
-                         {
-                              MessageBox.Show("Account or password is incorrect!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                              txtPassword.Clear();
-                              txtPassword.Focus();
                          }
                     }
                     catch (Exception ex)
                     {
+                         //Console.WriteLine($"Error details: {ex.ToString()}");
                          MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                }
@@ -138,17 +128,33 @@ namespace PG_BMHTTT_PMS
 
           }
 
-          // Optional: Add method to toggle password visibility
-          //private void togglePassword_Click(object sender, EventArgs e)
-          //{
-          //     if (txtPassword.PasswordChar == '*')
-          //     {
-          //          txtPassword.PasswordChar = '\0'; // Show password
-          //     }
-          //     else
-          //     {
-          //          txtPassword.PasswordChar = '*'; // Hide password
-          //     }
-          //}
+          private string HashPassword(string password, string salt)
+          {
+               using (var sha256 = SHA256.Create())
+               {
+                    var combinedPassword = string.Concat(password, salt);
+                    byte[] bytes = Encoding.UTF8.GetBytes(combinedPassword);
+                    byte[] hash = sha256.ComputeHash(bytes);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+               }
+          }
+
+          private void pictureBoxHidePass_Click(object sender, EventArgs e)
+          {
+               if(txtPassword.PasswordChar == '●')
+               {
+                    pictureBoxShowPass.BringToFront();
+                    txtPassword.PasswordChar = '\0';
+               }
+          }
+
+          private void pictureBoxShowPass_Click(object sender, EventArgs e)
+          {
+               if (txtPassword.PasswordChar == '\0')
+               {
+                    pictureBoxHidePass.BringToFront();
+                    txtPassword.PasswordChar = '●';
+               }
+          }
      }
 }

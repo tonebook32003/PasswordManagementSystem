@@ -16,5 +16,15 @@ namespace PG_BMHTTT_PMS.Admin
           {
                InitializeComponent();
           }
+
+          private void AnalysticForm_Load(object sender, EventArgs e)
+          {
+
+          }
+
+          private void guna2HtmlLabel9_Click(object sender, EventArgs e)
+          {
+
+          }
      }
 }
