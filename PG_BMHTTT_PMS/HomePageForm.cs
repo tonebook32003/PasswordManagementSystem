@@ -12,9 +12,13 @@ namespace PG_BMHTTT_PMS
 {
      public partial class HomePageForm : Form
      {
-          public HomePageForm()
+          string username, password;
+          public HomePageForm(string username, string password)
           {
                InitializeComponent();
+               this.username = username;
+               this.password = password;
+
           }
      }
 }

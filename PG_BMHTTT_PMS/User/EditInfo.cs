@@ -17,9 +17,10 @@ namespace PG_BMHTTT_PMS.User
           private DesEncrypter desEncrypter;
           private int UserID;
           private string WebsiteName;
+          string username, password;
           public EditInfo(int userId, int entryId, string websiteName, string websiteUrl,
                            string usernameForSite, string decryptedPassword, string notes,
-                           string category, DateTime? createdDate, DateTime? lastModified)
+                           string category, DateTime? createdDate, DateTime? lastModified, string username, string password)
           {
                txt_webName.Text = websiteName;
                txt_urlWeb.Text = websiteUrl;
@@ -34,11 +35,8 @@ namespace PG_BMHTTT_PMS.User
                InitializeComponent();
                LoadCategoriesIntoComboBox(userId);
                desEncrypter = new DesEncrypter();
-          }
-
-          private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-          {
-
+               this.username = username;
+               this.password = password;
           }
 
           private void btn_update_Click(object sender, EventArgs e)
@@ -59,7 +57,7 @@ namespace PG_BMHTTT_PMS.User
                byte[] key = desEncrypter.GenerateKey();
                byte[] encryptedPassword = desEncrypter.Encrypt(password, key);
 
-               using (OracleConnection conn = ConnectDatabase.Get_Connect())
+               using (OracleConnection conn = ConnectDatabase.Get_Connect(username,password))
                {
                     try
                     {
@@ -94,7 +92,7 @@ namespace PG_BMHTTT_PMS.User
           {
                List<string> categories = new List<string>();
 
-               using (OracleConnection conn = ConnectDatabase.Get_Connect())
+               using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                {
                     try
                     {
@@ -138,6 +136,21 @@ namespace PG_BMHTTT_PMS.User
                     }
                     finally { if (conn.State == ConnectionState.Open) { conn.Close(); } }
                }
+          }
+
+          private void btn_cancel_Click(object sender, EventArgs e)
+          {
+
+          }
+
+          private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+          {
+
+          }
+
+          private void EditInfo_Load(object sender, EventArgs e)
+          {
+
           }
      }
 }

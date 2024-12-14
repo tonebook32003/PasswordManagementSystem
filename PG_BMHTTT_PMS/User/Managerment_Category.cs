@@ -16,21 +16,22 @@ namespace PG_BMHTTT_PMS.User
      {
           private int UserID;
           private AddPassword parentForm;
-          public Managerment_Category(int userID, AddPassword parent)
+          string username, password;
+          public Managerment_Category(int userID, AddPassword parent, string username, string password)
           {
                InitializeComponent();
-
                UserID = userID;
                parentForm = parent;
                CenterToScreen();
                LoadCategoriesIntoGridView(UserID);
-
+               this.username = username;
+               this.password = password;
           }
           public void LoadCategoriesIntoGridView(int userId, string categorySearch = null)
           {
                List<Category> categories = new List<Category>();
 
-               using (OracleConnection conn = ConnectDatabase.Get_Connect())
+               using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                {
                     try
                     {
@@ -119,7 +120,7 @@ namespace PG_BMHTTT_PMS.User
 
                try
                {
-                    using (OracleConnection conn = ConnectDatabase.Get_Connect())
+                    using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                     {
                          if (conn.State == ConnectionState.Closed)
                               conn.Open();
@@ -193,7 +194,7 @@ namespace PG_BMHTTT_PMS.User
                     {
                          try
                          {
-                              using (OracleConnection conn = ConnectDatabase.Get_Connect())
+                              using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                               {
                                    if (conn.State == ConnectionState.Closed)
                                         conn.Open();
@@ -224,6 +225,11 @@ namespace PG_BMHTTT_PMS.User
                {
                     MessageBox.Show("Please select a category to delete.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
+          }
+
+          private void DataGridView_Category_CellContentClick(object sender, DataGridViewCellEventArgs e)
+          {
+
           }
 
           private void btn_reload_Click(object sender, EventArgs e)

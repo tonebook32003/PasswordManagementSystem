@@ -116,56 +116,65 @@ VALUES (users_seq.NEXTVAL, 'charlie_brown', 'charlie.brown@example.com', 'hashed
 
 --================INSERT Password_Entries ====================Xem chỉnh lại khóa ngoại vì gennarate ID ngẫu nhiên
 INSERT INTO Password_Entries (entry_id, user_id, website_name, website_url, username_for_site, encrypted_password, notes, category, last_modified) 
-VALUES (password_entries_seq.NEXTVAL, 21, 'Google', 'https://accounts.google.com', 'john.doe', 'encrypted_pwd_1', 'Main email account', 'Email', NULL);
+VALUES (password_entries_seq.NEXTVAL, 1, 'Google', 'https://accounts.google.com', 'john.doe', 'encrypted_pwd_1', 'Main email account', 'Email', NULL);
 
 INSERT INTO Password_Entries (entry_id, user_id, website_name, website_url, username_for_site, encrypted_password, notes, category, last_modified) 
-VALUES (password_entries_seq.NEXTVAL, 22, 'Facebook', 'https://facebook.com', 'jane.smith', 'encrypted_pwd_2', 'Personal account', 'Social Media', NULL);
+VALUES (password_entries_seq.NEXTVAL, 2, 'Facebook', 'https://facebook.com', 'jane.smith', 'encrypted_pwd_2', 'Personal account', 'Social Media', NULL);
 
 INSERT INTO Password_Entries (entry_id, user_id, website_name, website_url, username_for_site, encrypted_password, notes, category, last_modified) 
-VALUES (password_entries_seq.NEXTVAL, 23, 'GitHub', 'https://github.com', 'alice_walker', 'encrypted_pwd_3', NULL, 'Development', SYSTIMESTAMP);
+VALUES (password_entries_seq.NEXTVAL, 1, 'GitHub', 'https://github.com', 'alice_walker', 'encrypted_pwd_3', NULL, 'Development', SYSTIMESTAMP);
 
 INSERT INTO Password_Entries (entry_id, user_id, website_name, website_url, username_for_site, encrypted_password, notes, category, last_modified) 
-VALUES (password_entries_seq.NEXTVAL, 24, 'LinkedIn', 'https://linkedin.com', 'bob_builder', 'encrypted_pwd_4', 'Professional profile', 'Networking', NULL);
+VALUES (password_entries_seq.NEXTVAL, 2, 'LinkedIn', 'https://linkedin.com', 'bob_builder', 'encrypted_pwd_4', 'Professional profile', 'Networking', NULL);
 
 INSERT INTO Password_Entries (entry_id, user_id, website_name, website_url, username_for_site, encrypted_password, notes, category, last_modified) 
-VALUES (password_entries_seq.NEXTVAL, 25, 'Amazon', 'https://amazon.com', 'charlie.brown', 'encrypted_pwd_5', 'Shopping account', 'E-commerce', NULL);
+VALUES (password_entries_seq.NEXTVAL, 1, 'Amazon', 'https://amazon.com', 'charlie.brown', 'encrypted_pwd_5', 'Shopping account', 'E-commerce', NULL);
 
 --================INSERT Categories ============================Xem chỉnh lại khóa ngoại vì gennarate ID ngẫu nhiên
 INSERT INTO Categories (category_id, user_id, category_name, description) 
-VALUES (categories_seq.NEXTVAL, 21, 'Email', 'Email accounts for work and personal use');
+VALUES (categories_seq.NEXTVAL, 1, 'Email', 'Email accounts for work and personal use');
 
 INSERT INTO Categories (category_id, user_id, category_name, description) 
-VALUES (categories_seq.NEXTVAL, 22, 'Social Media', 'Facebook, Instagram, etc.');
+VALUES (categories_seq.NEXTVAL, 2, 'Social Media', 'Facebook, Instagram, etc.');
 
 INSERT INTO Categories (category_id, user_id, category_name, description) 
-VALUES (categories_seq.NEXTVAL, 23, 'Development', 'Tools and platforms for coding');
+VALUES (categories_seq.NEXTVAL, 1, 'Development', 'Tools and platforms for coding');
 
 INSERT INTO Categories (category_id, user_id, category_name, description) 
-VALUES (categories_seq.NEXTVAL, 24, 'Networking', 'Professional platforms like LinkedIn');
+VALUES (categories_seq.NEXTVAL, 2, 'Networking', 'Professional platforms like LinkedIn');
 
 INSERT INTO Categories (category_id, user_id, category_name, description) 
-VALUES (categories_seq.NEXTVAL, 25, 'E-commerce', 'Shopping websites and services');
+VALUES (categories_seq.NEXTVAL, 1, 'E-commerce', 'Shopping websites and services');
 
 --================INSERT Login_History ============================
 INSERT INTO Login_History (history_id, user_id, login_timestamp, ip_address, login_status, device_info) 
-VALUES (login_history_seq.NEXTVAL, 21, SYSTIMESTAMP, '192.168.1.1', 'SUCCESS', 'Chrome on Windows');
+VALUES (login_history_seq.NEXTVAL, 1, SYSTIMESTAMP, '192.168.1.1', 'SUCCESS', 'Chrome on Windows');
 
 INSERT INTO Login_History (history_id, user_id, login_timestamp, ip_address, login_status, device_info) 
-VALUES (login_history_seq.NEXTVAL, 22, SYSTIMESTAMP, '192.168.1.2', 'FAILURE', 'Safari on macOS');
+VALUES (login_history_seq.NEXTVAL, 2, SYSTIMESTAMP, '192.168.1.2', 'FAILURE', 'Safari on macOS');
 
 INSERT INTO Login_History (history_id, user_id, login_timestamp, ip_address, login_status, device_info) 
-VALUES (login_history_seq.NEXTVAL, 23, SYSTIMESTAMP, '192.168.1.3', 'SUCCESS', 'Firefox on Linux');
+VALUES (login_history_seq.NEXTVAL, 1, SYSTIMESTAMP, '192.168.1.3', 'SUCCESS', 'Firefox on Linux');
 
 INSERT INTO Login_History (history_id, user_id, login_timestamp, ip_address, login_status, device_info) 
-VALUES (login_history_seq.NEXTVAL, 24, SYSTIMESTAMP, '192.168.1.4', 'SUCCESS', 'Edge on Windows');
+VALUES (login_history_seq.NEXTVAL, 2, SYSTIMESTAMP, '192.168.1.4', 'SUCCESS', 'Edge on Windows');
 
 INSERT INTO Login_History (history_id, user_id, login_timestamp, ip_address, login_status, device_info) 
-VALUES (login_history_seq.NEXTVAL, 25, SYSTIMESTAMP, '192.168.1.5', 'FAILURE', 'Chrome on Android');
-
-
-
+VALUES (login_history_seq.NEXTVAL, 1, SYSTIMESTAMP, '192.168.1.5', 'FAILURE', 'Chrome on Android');
+--
 SELECT * FROM users;
-SELECT * FROM password_entries where user_id = 1;
+SELECT * FROM password_entries where user_id = 2;
 SELECT * FROM login_history;
 SELECT * FROM categories;
-SELECT website_name, username_for_site, encrypted_password, category FROM Password_Entries
+SELECT * FROM PASSWORD_ENTRIES;
+SELECT website_name,user_id, username_for_site, encrypted_password, category FROM Password_Entries;
+--
+DROP TABLE CATEGORIES;
+DROP TABLE LOGIN_HISTORY;
+DROP TABLE PASSWORD_ENTRIES;
+DROP TABLE USERS;
+--
+DROP SEQUENCE CATEGORIES_SEQ;
+DROP SEQUENCE LOGIN_HISTORY_SEQ;
+DROP SEQUENCE PASSWORD_ENTRIES_SEQ; 
+DROP SEQUENCE USERS_SEQ;

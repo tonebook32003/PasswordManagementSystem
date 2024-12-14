@@ -17,8 +17,9 @@ namespace PG_BMHTTT_PMS.User
           private int UserID;
           private DesEncrypter desEncrypter;
           private PasswordManagementForm parentForm;
+          string username, password;
 
-          public AddPassword(int userID, PasswordManagementForm parent)
+          public AddPassword(int userID, PasswordManagementForm parent, string username, string password)
           {
                InitializeComponent();
                UserID = userID;
@@ -26,17 +27,22 @@ namespace PG_BMHTTT_PMS.User
                CenterToScreen();
                LoadCategoriesIntoComboBox(userID);
                desEncrypter = new DesEncrypter();
+               this.username = username;
+               this.password = password;
           }
 
           private void btn_cancel_Click(object sender, EventArgs e)
           {
-               this.Close();
+               DialogResult result = MessageBox.Show("Bạn có muốn chỉnh sửa tiếp không","Nofitication", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+               if(result == DialogResult.Yes){
+                    this.Close();
+               }
           }
           public void LoadCategoriesIntoComboBox(int userId)
           {
                List<string> categories = new List<string>();
 
-               using (OracleConnection conn = ConnectDatabase.Get_Connect())
+               using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                {
                     try
                     {
@@ -96,7 +102,7 @@ namespace PG_BMHTTT_PMS.User
                byte[] encryptedPassword = desEncrypter.Encrypt(password, key);
 
                // Thêm dữ liệu vào cơ sở dữ liệu
-               using (OracleConnection conn = ConnectDatabase.Get_Connect())
+               using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                {
                     try
                     {
@@ -132,12 +138,12 @@ namespace PG_BMHTTT_PMS.User
           {
                try
                {
-                    if (ConnectDatabase.Get_Connect().State == ConnectionState.Open)
+                    if (ConnectDatabase.Get_Connect(username, password).State == ConnectionState.Open)
                     {
-                         ConnectDatabase.Get_Connect().Close();
+                         ConnectDatabase.Get_Connect(username, password).Close();
                     }
 
-                    Managerment_Category managermentCategoryForm = new Managerment_Category(UserID, this);
+                    Managerment_Category managermentCategoryForm = new Managerment_Category(UserID, this, username, password);
                     managermentCategoryForm.Show();
                }
                catch (Exception ex)

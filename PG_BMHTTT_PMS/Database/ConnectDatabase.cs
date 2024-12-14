@@ -1,37 +1,27 @@
 ﻿using System;
+using System.Web.SessionState;
 using Oracle.ManagedDataAccess.Client;
 
 namespace PG_BMHTTT_PMS
 {
      public static class ConnectDatabase
      {
-          private static OracleConnection Conn;
-
-          public static bool Connect()
+          private static OracleConnection Conn; 
+          public static bool Connect(string username, string password)
           {
                try
                {
-                    string connString = "Data Source=(DESCRIPTION=" +
-                        "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)" +
-                        "(HOST=localhost)(PORT=1521)))" +
-                        "(CONNECT_DATA=(SERVER=DEDICATED)(SID=orcl)));" +
-                        "User Id=c##PG_BMHTTT_PMS;Password=123;" +
-                        "Connection Timeout=60;";
+                    string connString = $"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))" +
+                    $"(CONNECT_DATA=(SERVER=DEDICATED)(SID=orcl)));User ID={username};Password={password};";
+
 
                     if (Conn != null && Conn.State == System.Data.ConnectionState.Open)
                     {
                          Conn.Close();
                          Conn.Dispose();
                     }
-
                     Conn = new OracleConnection(connString);
                     Conn.Open();
-
-                    Console.WriteLine("Connected to Oracle database successfully!");
-                    //Console.WriteLine($"Connection State: {Conn.State}");
-                    //Console.WriteLine($"Server Version: {Conn.ServerVersion}");
-                    //Console.WriteLine($"Current Schema: {GetCurrentSchema()}");
-
                     return true;
                }
                catch (Exception ex)
@@ -42,11 +32,11 @@ namespace PG_BMHTTT_PMS
                }
           }
 
-          public static OracleConnection Get_Connect()
+          public static OracleConnection Get_Connect(string username, string password)
           {
                if (Conn == null || Conn.State != System.Data.ConnectionState.Open)
                {
-                    Connect();
+                    Connect(username, password);
                }
                return Conn;
           }
@@ -67,7 +57,6 @@ namespace PG_BMHTTT_PMS
                }
           }
 
-          // Thêm method để đóng connection
           public static void Disconnect()
           {
                if (Conn != null)
@@ -80,5 +69,45 @@ namespace PG_BMHTTT_PMS
                     Conn = null;
                }
           }
+          //public static OracleConnection Conn;
+          //private static string Host = "localhost";
+          //private static string Port = "1521";
+          //private static string Sid = "orcl";
+
+
+          //public static OracleConnection GetConnection(string user, string password)
+          //{
+          //     try
+          //     {
+          //          if (Conn == null || Conn.State == System.Data.ConnectionState.Closed)
+          //          {
+          //               string connString = $"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={Host})(PORT={Port}))" +
+          //                                   $"(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={Sid})));User ID={user};Password={password};";
+
+          //               Conn = new OracleConnection(connString);
+          //               Conn.Open();
+          //          }
+          //          return Conn;
+          //     }
+          //     catch (Exception ex)
+          //     {
+          //          throw new Exception("Error while connecting to the database: " + ex.Message);
+          //     }
+          //}
+
+          //public static void CloseConnection()
+          //{
+          //     if (Conn != null && Conn.State == System.Data.ConnectionState.Open)
+          //     {
+          //          Conn.Close();
+          //          Conn.Dispose();
+          //          Conn = null;
+          //     }
+          //}
+
+          //public static bool IsConnectionOpen()
+          //{
+          //     return Conn != null && Conn.State == System.Data.ConnectionState.Open;
+          //}
      }
 }

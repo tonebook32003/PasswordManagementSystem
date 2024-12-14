@@ -15,9 +15,12 @@ namespace PG_BMHTTT_PMS
 {
      public partial class DashboardForm : Form
      {
-          public DashboardForm()
+          string username, password;
+          public DashboardForm(string username, string password)
           {
                InitializeComponent();
+               this.username = username;
+               this.password = password;
           }
 
 
@@ -52,27 +55,27 @@ namespace PG_BMHTTT_PMS
           
           private void btnHomePage_Click(object sender, EventArgs e)
           {
-               ViewChildForm(new HomePageForm());
+               ViewChildForm(new HomePageForm(username, password));
           }
 
           private void btnAnalystic_Click(object sender, EventArgs e)
           {
-               ViewChildForm(new AnalysticForm());
+               ViewChildForm(new AnalysticForm(username, password));
           }
 
           private void btnUserManagement_Click(object sender, EventArgs e)
           {
-               ViewChildForm(new UserManagementForm());
+               ViewChildForm(new UserManagementForm(username, password));
           }
 
           private void btnSettings_Click(object sender, EventArgs e)
           {
-               ViewChildForm(new UserManagementForm());
+               ViewChildForm(new UserManagementForm(username, password));
           }
 
           private void btnPassManagement_Click(object sender, EventArgs e)
           {
-               ViewChildForm(new PasswordManagementForm());
+               ViewChildForm(new PasswordManagementForm(username, password));
           }
           private void closeBtn_Click(object sender, EventArgs e)
           {

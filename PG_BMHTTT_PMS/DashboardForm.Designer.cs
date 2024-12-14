@@ -34,9 +34,7 @@
                this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
                this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
                this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-               this.btnSettings = new Guna.UI2.WinForms.Guna2Button();
                this.logoutBtn = new Guna.UI2.WinForms.Guna2Button();
-               this.btnAnalystic = new Guna.UI2.WinForms.Guna2Button();
                this.btnPassManagement = new Guna.UI2.WinForms.Guna2Button();
                this.btnUserManagement = new Guna.UI2.WinForms.Guna2Button();
                this.btnHomePage = new Guna.UI2.WinForms.Guna2Button();
@@ -69,9 +67,7 @@
                // 
                this.guna2GradientPanel1.BackColor = System.Drawing.SystemColors.Control;
                this.guna2GradientPanel1.Controls.Add(this.guna2ImageButton1);
-               this.guna2GradientPanel1.Controls.Add(this.btnSettings);
                this.guna2GradientPanel1.Controls.Add(this.logoutBtn);
-               this.guna2GradientPanel1.Controls.Add(this.btnAnalystic);
                this.guna2GradientPanel1.Controls.Add(this.btnPassManagement);
                this.guna2GradientPanel1.Controls.Add(this.btnUserManagement);
                this.guna2GradientPanel1.Controls.Add(this.btnHomePage);
@@ -98,25 +94,6 @@
                this.guna2ImageButton1.Size = new System.Drawing.Size(74, 89);
                this.guna2ImageButton1.TabIndex = 43;
                // 
-               // btnSettings
-               // 
-               this.btnSettings.BackColor = System.Drawing.Color.Transparent;
-               this.btnSettings.BorderRadius = 20;
-               this.btnSettings.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-               this.btnSettings.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-               this.btnSettings.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-               this.btnSettings.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-               this.btnSettings.FillColor = System.Drawing.Color.Transparent;
-               this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 9F);
-               this.btnSettings.ForeColor = System.Drawing.Color.Black;
-               this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-               this.btnSettings.ImageSize = new System.Drawing.Size(30, 30);
-               this.btnSettings.Location = new System.Drawing.Point(19, 436);
-               this.btnSettings.Name = "btnSettings";
-               this.btnSettings.Size = new System.Drawing.Size(51, 45);
-               this.btnSettings.TabIndex = 39;
-               this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-               // 
                // logoutBtn
                // 
                this.logoutBtn.BackColor = System.Drawing.Color.Transparent;
@@ -138,25 +115,6 @@
                this.logoutBtn.TabIndex = 32;
                this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
                // 
-               // btnAnalystic
-               // 
-               this.btnAnalystic.BackColor = System.Drawing.Color.Transparent;
-               this.btnAnalystic.BorderRadius = 20;
-               this.btnAnalystic.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-               this.btnAnalystic.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-               this.btnAnalystic.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-               this.btnAnalystic.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-               this.btnAnalystic.FillColor = System.Drawing.Color.Transparent;
-               this.btnAnalystic.Font = new System.Drawing.Font("Segoe UI", 9F);
-               this.btnAnalystic.ForeColor = System.Drawing.Color.Black;
-               this.btnAnalystic.Image = ((System.Drawing.Image)(resources.GetObject("btnAnalystic.Image")));
-               this.btnAnalystic.ImageSize = new System.Drawing.Size(30, 30);
-               this.btnAnalystic.Location = new System.Drawing.Point(19, 358);
-               this.btnAnalystic.Name = "btnAnalystic";
-               this.btnAnalystic.Size = new System.Drawing.Size(51, 45);
-               this.btnAnalystic.TabIndex = 38;
-               this.btnAnalystic.Click += new System.EventHandler(this.btnAnalystic_Click);
-               // 
                // btnPassManagement
                // 
                this.btnPassManagement.BackColor = System.Drawing.Color.Transparent;
@@ -170,7 +128,7 @@
                this.btnPassManagement.ForeColor = System.Drawing.Color.Black;
                this.btnPassManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnPassManagement.Image")));
                this.btnPassManagement.ImageSize = new System.Drawing.Size(30, 30);
-               this.btnPassManagement.Location = new System.Drawing.Point(19, 208);
+               this.btnPassManagement.Location = new System.Drawing.Point(19, 332);
                this.btnPassManagement.Name = "btnPassManagement";
                this.btnPassManagement.Size = new System.Drawing.Size(51, 45);
                this.btnPassManagement.TabIndex = 36;
@@ -189,7 +147,7 @@
                this.btnUserManagement.ForeColor = System.Drawing.Color.Black;
                this.btnUserManagement.Image = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.Image")));
                this.btnUserManagement.ImageSize = new System.Drawing.Size(30, 30);
-               this.btnUserManagement.Location = new System.Drawing.Point(19, 278);
+               this.btnUserManagement.Location = new System.Drawing.Point(19, 402);
                this.btnUserManagement.Name = "btnUserManagement";
                this.btnUserManagement.Size = new System.Drawing.Size(51, 45);
                this.btnUserManagement.TabIndex = 35;
@@ -208,7 +166,7 @@
                this.btnHomePage.ForeColor = System.Drawing.Color.Black;
                this.btnHomePage.Image = ((System.Drawing.Image)(resources.GetObject("btnHomePage.Image")));
                this.btnHomePage.ImageSize = new System.Drawing.Size(30, 30);
-               this.btnHomePage.Location = new System.Drawing.Point(19, 134);
+               this.btnHomePage.Location = new System.Drawing.Point(19, 258);
                this.btnHomePage.Name = "btnHomePage";
                this.btnHomePage.Size = new System.Drawing.Size(51, 45);
                this.btnHomePage.TabIndex = 27;
@@ -358,13 +316,11 @@
           private Guna.UI2.WinForms.Guna2Button btnHomePage;
           private Guna.UI2.WinForms.Guna2Button btnPassManagement;
           private Guna.UI2.WinForms.Guna2Button btnUserManagement;
-          private Guna.UI2.WinForms.Guna2Button btnAnalystic;
           private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
           private Guna.UI2.WinForms.Guna2Button guna2Button1;
           private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
           private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
           private Guna.UI2.WinForms.Guna2Button closeBtn;
-          private Guna.UI2.WinForms.Guna2Button btnSettings;
           private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
           private Guna.UI2.WinForms.Guna2Panel DisplayFormPanel;
           private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;

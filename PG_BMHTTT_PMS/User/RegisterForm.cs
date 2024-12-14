@@ -14,9 +14,12 @@ namespace PG_BMHTTT_PMS
 {
      public partial class RegisterForm : Form
      {
-          public RegisterForm()
+          string username, password;
+          public RegisterForm(string username, string password)
           {
                InitializeComponent();
+               this.username = username;
+               this.password = password;
           }
           private class RegisterUser
           {
@@ -70,7 +73,7 @@ namespace PG_BMHTTT_PMS
           {
                try
                {
-                    using (OracleConnection conn = ConnectDatabase.Get_Connect())
+                    using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                     {
                          string sql = "SELECT COUNT(*) FROM Users WHERE email = :email OR username = :username";
                          using (OracleCommand cmd = new OracleCommand(sql, conn))
@@ -95,7 +98,7 @@ namespace PG_BMHTTT_PMS
           {
                try
                {
-                    using (OracleConnection conn = ConnectDatabase.Get_Connect())
+                    using (OracleConnection conn = ConnectDatabase.Get_Connect(username, password))
                     {
                          string sql = @"INSERT INTO Users (user_id, username, email, master_password, salt, created_date) 
                                       VALUES  (users_seq.NEXTVAL, :username, :email, :password, :salt, CURRENT_TIMESTAMP)";
@@ -185,6 +188,11 @@ namespace PG_BMHTTT_PMS
                     pictureBoxShowPass.BringToFront();
                     txtPassword.PasswordChar = '\0';
                }
+          }
+
+          private void txtPassword_TextChanged(object sender, EventArgs e)
+          {
+
           }
 
           private void pictureBoxShowPass_Click(object sender, EventArgs e)

@@ -12,7 +12,6 @@ namespace PG_BMHTTT_PMS.Encrypt
      internal class DesEncrypter
      {
           byte[] IV = { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
-
           public byte[] Encrypt(string plainText, byte[] key)
           {
                try

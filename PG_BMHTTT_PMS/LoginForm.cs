@@ -8,6 +8,7 @@ namespace PG_BMHTTT_PMS
 {
      public partial class LoginForm : Form
      {
+          string username, password;
           public LoginForm()
           {
                InitializeComponent();
@@ -15,17 +16,13 @@ namespace PG_BMHTTT_PMS
           
           private void LoginForm_Load(object sender, EventArgs e)
           {
-               // Thử kết nối database khi form load
-               if (!ConnectDatabase.Connect())
-               {
-                    MessageBox.Show("Unable to connect to database on startup!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               }
+
           }
 
           private void loginBtn_Click(object sender, EventArgs e)
           {
-               string username = txtUsername.Text.Trim();
-               string password = txtPassword.Text.Trim();
+               username = txtUsername.Text.Trim();
+               password = txtPassword.Text.Trim();
 
                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                {
@@ -33,45 +30,47 @@ namespace PG_BMHTTT_PMS
                     return;
                }
 
-               if (ConnectDatabase.Connect())
+               if (ConnectDatabase.Connect(username, password))
                {
                     try
                     {
-                         OracleConnection conn = ConnectDatabase.Get_Connect();
-                         string query = "SELECT * FROM USERS WHERE USERNAME = :username";
-                         
-                         using (OracleCommand cmd = new OracleCommand(query, conn))
-                         {
-                              cmd.Parameters.Add(":username", OracleDbType.Varchar2).Value = username;
-
-                              using (OracleDataReader reader = cmd.ExecuteReader())
-                              {
-                                   if (reader.Read())
-                                   {
-                                        string salt = reader["SALT"].ToString();
-                                        string hashedPassword = HashPassword(password, salt);
-                                        if (hashedPassword == reader["MASTER_PASSWORD"].ToString())
-                                        {
-                                             MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                             DashboardForm dashboard = new DashboardForm();
-                                             dashboard.Show();
-                                             this.Hide();
-                                        }
-                                        else
-                                        {
-                                             MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                             txtPassword.Clear();
-                                             txtPassword.Focus();
-                                        }
-                                   }
-                                   else
-                                   {
-                                        MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        txtPassword.Clear();
-                                        txtPassword.Focus();
-                                   }
-                              }
-                         }
+                         OracleConnection conn = ConnectDatabase.Get_Connect(username, password);
+                         //string query = "SELECT * FROM USERS ";
+                         //WHERE USERNAME = :username
+                         //using (OracleCommand cmd = new OracleCommand(query, conn))
+                         //{
+                         //     cmd.Parameters.Add(":username", OracleDbType.Varchar2).Value = username;
+                         //     using (OracleDataReader reader = cmd.ExecuteReader())
+                         //     {
+                         //          if (reader.Read())
+                         //          {
+                         //               string salt = reader["SALT"].ToString();
+                         //               string hashedPassword = HashPassword(password, salt);
+                         //               if (hashedPassword == reader["MASTER_PASSWORD"].ToString())
+                         //               {
+                         //                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         //                    DashboardForm dashboard = new DashboardForm(username, password);
+                         //                    dashboard.Show();
+                         //                    this.Hide();
+                         //               }
+                         //               else
+                         //               {
+                         //                    MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         //                    txtPassword.Clear();
+                         //                    txtPassword.Focus();
+                         //               }
+                         //          }
+                         //          else
+                         //          {
+                         //               MessageBox.Show("Invalid username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         //               txtPassword.Clear();
+                         //               txtPassword.Focus();
+                         //          }
+                         //     }
+                         //}
+                         DashboardForm dashboard = new DashboardForm(username, password);
+                         dashboard.Show();
+                         this.Hide();
                     }
                     catch (Exception ex)
                     {
@@ -102,9 +101,9 @@ namespace PG_BMHTTT_PMS
 
           private void forgotpasswordBtn_Click(object sender, EventArgs e)
           {
-               ForgotPasswordForm forgotPasswordForm = new ForgotPasswordForm();
-               forgotPasswordForm.Show();
-               this.Hide();
+               //ForgotPasswordForm forgotPasswordForm = new ForgotPasswordForm();
+               //forgotPasswordForm.Show();
+               //this.Hide();
           }
 
           private void closeBtn_Click_1(object sender, EventArgs e)
@@ -118,7 +117,7 @@ namespace PG_BMHTTT_PMS
 
           private void registerBtn_Click(object sender, EventArgs e)
           {
-               RegisterForm registerform = new RegisterForm();
+               RegisterForm registerform = new RegisterForm(username, password);
                registerform.Show();
                this.Hide();
           }

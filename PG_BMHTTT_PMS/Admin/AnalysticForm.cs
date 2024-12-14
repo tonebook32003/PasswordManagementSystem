@@ -12,9 +12,12 @@ namespace PG_BMHTTT_PMS.Admin
 {
      public partial class AnalysticForm : Form
      {
-          public AnalysticForm()
+          string username, password;
+          public AnalysticForm(string username, string password)
           {
                InitializeComponent();
+               this.username = username;
+               this.password = password; 
           }
 
           private void AnalysticForm_Load(object sender, EventArgs e)

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PG_BMHTTT_PMS
+namespace PG_BMHTTT_PMS.Admin
 {
-     public partial class ForgotPasswordForm : Form
+     public partial class FixInfoForm : Form
      {
-          public ForgotPasswordForm()
+          public FixInfoForm()
           {
                InitializeComponent();
           }

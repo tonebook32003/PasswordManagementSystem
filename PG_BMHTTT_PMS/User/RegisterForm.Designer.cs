@@ -31,6 +31,8 @@
                this.components = new System.ComponentModel.Container();
                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
                this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+               this.pictureBoxHidePass = new System.Windows.Forms.PictureBox();
+               this.pictureBoxShowPass = new System.Windows.Forms.PictureBox();
                this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
                this.loginButton = new Guna.UI2.WinForms.Guna2Button();
                this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -45,8 +47,6 @@
                this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
                this.closeBtn = new Guna.UI2.WinForms.Guna2Button();
                this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-               this.pictureBoxHidePass = new System.Windows.Forms.PictureBox();
-               this.pictureBoxShowPass = new System.Windows.Forms.PictureBox();
                this.guna2CustomGradientPanel1.SuspendLayout();
                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHidePass)).BeginInit();
                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowPass)).BeginInit();
@@ -79,6 +79,30 @@
                this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(456, 686);
                this.guna2CustomGradientPanel1.TabIndex = 0;
                this.guna2CustomGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
+               // 
+               // pictureBoxHidePass
+               // 
+               this.pictureBoxHidePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxHidePass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHidePass.Image")));
+               this.pictureBoxHidePass.Location = new System.Drawing.Point(330, 448);
+               this.pictureBoxHidePass.Name = "pictureBoxHidePass";
+               this.pictureBoxHidePass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxHidePass.TabIndex = 55;
+               this.pictureBoxHidePass.TabStop = false;
+               this.pictureBoxHidePass.Click += new System.EventHandler(this.pictureBoxHidePass_Click);
+               // 
+               // pictureBoxShowPass
+               // 
+               this.pictureBoxShowPass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowPass.Image")));
+               this.pictureBoxShowPass.Location = new System.Drawing.Point(330, 448);
+               this.pictureBoxShowPass.Name = "pictureBoxShowPass";
+               this.pictureBoxShowPass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxShowPass.TabIndex = 54;
+               this.pictureBoxShowPass.TabStop = false;
+               this.pictureBoxShowPass.Click += new System.EventHandler(this.pictureBoxShowPass_Click);
                // 
                // guna2HtmlLabel6
                // 
@@ -177,6 +201,7 @@
                this.txtPassword.Size = new System.Drawing.Size(329, 44);
                this.txtPassword.TabIndex = 49;
                this.txtPassword.TextOffset = new System.Drawing.Point(3, 0);
+               this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
                // 
                // guna2HtmlLabel3
                // 
@@ -310,30 +335,6 @@
                // 
                this.guna2Elipse1.BorderRadius = 20;
                this.guna2Elipse1.TargetControl = this;
-               // 
-               // pictureBoxHidePass
-               // 
-               this.pictureBoxHidePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-               this.pictureBoxHidePass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHidePass.Image")));
-               this.pictureBoxHidePass.Location = new System.Drawing.Point(330, 448);
-               this.pictureBoxHidePass.Name = "pictureBoxHidePass";
-               this.pictureBoxHidePass.Size = new System.Drawing.Size(47, 24);
-               this.pictureBoxHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-               this.pictureBoxHidePass.TabIndex = 55;
-               this.pictureBoxHidePass.TabStop = false;
-               this.pictureBoxHidePass.Click += new System.EventHandler(this.pictureBoxHidePass_Click);
-               // 
-               // pictureBoxShowPass
-               // 
-               this.pictureBoxShowPass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-               this.pictureBoxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowPass.Image")));
-               this.pictureBoxShowPass.Location = new System.Drawing.Point(330, 448);
-               this.pictureBoxShowPass.Name = "pictureBoxShowPass";
-               this.pictureBoxShowPass.Size = new System.Drawing.Size(47, 24);
-               this.pictureBoxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-               this.pictureBoxShowPass.TabIndex = 54;
-               this.pictureBoxShowPass.TabStop = false;
-               this.pictureBoxShowPass.Click += new System.EventHandler(this.pictureBoxShowPass_Click);
                // 
                // RegisterForm
                // 

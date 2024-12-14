@@ -31,6 +31,8 @@
                this.components = new System.ComponentModel.Container();
                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
                this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+               this.pictureBoxHidePass = new System.Windows.Forms.PictureBox();
+               this.pictureBoxShowPass = new System.Windows.Forms.PictureBox();
                this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
                this.registerBtn = new Guna.UI2.WinForms.Guna2Button();
                this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -45,8 +47,6 @@
                this.loginBtn = new Guna.UI2.WinForms.Guna2Button();
                this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
                this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-               this.pictureBoxHidePass = new System.Windows.Forms.PictureBox();
-               this.pictureBoxShowPass = new System.Windows.Forms.PictureBox();
                this.guna2CustomGradientPanel1.SuspendLayout();
                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHidePass)).BeginInit();
                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowPass)).BeginInit();
@@ -80,6 +80,30 @@
                this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(456, 686);
                this.guna2CustomGradientPanel1.TabIndex = 0;
                this.guna2CustomGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2CustomGradientPanel1_Paint);
+               // 
+               // pictureBoxHidePass
+               // 
+               this.pictureBoxHidePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxHidePass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHidePass.Image")));
+               this.pictureBoxHidePass.Location = new System.Drawing.Point(329, 360);
+               this.pictureBoxHidePass.Name = "pictureBoxHidePass";
+               this.pictureBoxHidePass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxHidePass.TabIndex = 57;
+               this.pictureBoxHidePass.TabStop = false;
+               this.pictureBoxHidePass.Click += new System.EventHandler(this.pictureBoxHidePass_Click);
+               // 
+               // pictureBoxShowPass
+               // 
+               this.pictureBoxShowPass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+               this.pictureBoxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowPass.Image")));
+               this.pictureBoxShowPass.Location = new System.Drawing.Point(329, 360);
+               this.pictureBoxShowPass.Name = "pictureBoxShowPass";
+               this.pictureBoxShowPass.Size = new System.Drawing.Size(47, 24);
+               this.pictureBoxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+               this.pictureBoxShowPass.TabIndex = 56;
+               this.pictureBoxShowPass.TabStop = false;
+               this.pictureBoxShowPass.Click += new System.EventHandler(this.pictureBoxShowPass_Click);
                // 
                // guna2HtmlLabel5
                // 
@@ -300,7 +324,7 @@
                this.txtUsername.BackColor = System.Drawing.Color.Transparent;
                this.txtUsername.BorderRadius = 5;
                this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-               this.txtUsername.DefaultText = "";
+               this.txtUsername.DefaultText = "c##PG_BMHTTT_PMS";
                this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
                this.txtUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
                this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -325,30 +349,6 @@
                // 
                this.guna2Elipse1.BorderRadius = 20;
                this.guna2Elipse1.TargetControl = this;
-               // 
-               // pictureBoxHidePass
-               // 
-               this.pictureBoxHidePass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-               this.pictureBoxHidePass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxHidePass.Image")));
-               this.pictureBoxHidePass.Location = new System.Drawing.Point(329, 361);
-               this.pictureBoxHidePass.Name = "pictureBoxHidePass";
-               this.pictureBoxHidePass.Size = new System.Drawing.Size(47, 24);
-               this.pictureBoxHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-               this.pictureBoxHidePass.TabIndex = 57;
-               this.pictureBoxHidePass.TabStop = false;
-               this.pictureBoxHidePass.Click += new System.EventHandler(this.pictureBoxHidePass_Click);
-               // 
-               // pictureBoxShowPass
-               // 
-               this.pictureBoxShowPass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-               this.pictureBoxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowPass.Image")));
-               this.pictureBoxShowPass.Location = new System.Drawing.Point(329, 361);
-               this.pictureBoxShowPass.Name = "pictureBoxShowPass";
-               this.pictureBoxShowPass.Size = new System.Drawing.Size(47, 24);
-               this.pictureBoxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-               this.pictureBoxShowPass.TabIndex = 56;
-               this.pictureBoxShowPass.TabStop = false;
-               this.pictureBoxShowPass.Click += new System.EventHandler(this.pictureBoxShowPass_Click);
                // 
                // LoginForm
                // 
